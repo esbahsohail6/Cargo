@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+   {% load static %}
+   <html lang="en">
+   <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'cargo/style.css' %}">
+   <title>DATAENTRY</title>
+   </head>
+<body>
+<div class="data-entry-container">
+    <h2>Data Entry</h2>
+        <!-- <button class="option-btn" id="car_btn">Enter Car Data</button>
+        <br>
+        <button class="option-btn" id="cust_btn">Enter Customer Data</button>
+        <br>
+        <button class="option-btn" id="supp_btn">Enter Supplier Data</button>
+        <br>
+        <button class="option-btn" id="progress_btn">Enter Progress Data</button> --> 
+    
+    {% if not row and not car_form and not custform and not supp_form and not Profit_form and not NICform and not modelform and not noqt and not suppname_form and not supp_name_form and not modeldataform %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="button" value="Enter Car">Enter Car Data</button>
+        <br>
+        <button type="submit" name="button" value="Enter Customer">Enter Customer Data</button>
+        <br>
+        <button type="submit" name="button" value="Enter Supplier">Enter Supplier</button>
+        <br>
+        <button type="submit" name="button" value="Enter Profit">Enter Profit Data</button>  
+    </form>
+    {% endif %}
+
+    {% if car_form %}
+        <form method="post", action="{% url 'savecar' %}" class="car-form-container">
+            {% csrf_token %}
+            <h1>CAR FORM</h1>
+            <br>
+            {{car_form.as_p}}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+    {% if NICform %}
+        <form method="post", action="{% url 'checkNIC' %}" class="cust-form-container" onsubmit="return handleSubmit()">
+            {% csrf_token %}
+            enter your NIC number
+            <br>
+            {{NICform}}
+            <br>
+            <button type="submit" id="submitButton">Submit</button>
+        </form> 
+    {% endif %} 
+
+   
+   
+    {% if custform %}
+        <form method="post", action="{% url 'savecust' %}"class="cust-form-container" onsubmit="return handleSubmit()">
+            {% csrf_token %}
+            <br>
+            {{custform}}
+            <br>
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+    {% endif %} 
+    
+
+    {% if noqt %}
+    <form method="post", action="{% url 'checkmodel' %}"class="cust-form-container" onsubmit="return handleSubmit()" >
+        {% csrf_token %}
+        <br>
+        <h1>CAR OUT OF STOCK</h1>
+        <br>
+        {{noqt_modelform}}
+        <br>
+        <button type="submit" id="submitButton">Submit</button>
+    {% endif %}            
+           
+    {% if modelform %}
+        <form method="post", action="{% url 'checkmodel' %}"class="cust-form-container" onsubmit="return handleSubmit()">
+            {% csrf_token %}
+            <br>
+            {{modelform}}
+            <br>
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+    {% endif %} 
+
+
+    {% if suppname_form %}
+        <form method="post", action="{% url 'checksupp' %}"class="cust-form-container" onsubmit="return handleSubmit()">
+            {% csrf_token %}
+            <br>
+            {{suppname_form}}
+            <br>
+            <button type="submit" id="submitButton">Submit</button>
+        </form>
+    {% endif %} 
+
+
+    {% if row %}
+        <form method="post", action="{% url 'sales_save' %}"class="cust-form-container" >
+            {% csrf_token %}
+            <br>
+            <h1>DATA ENTERED SUCCESSFULLY</h1>
+            <button type="submit">Submit</button>
+            <br>
+        </form>
+    {% endif %} 
+
+    {% if modeldataform %}
+        <form method="post", action="{% url 'checkmodeldataform' %}" class="supp-form-container">
+            {% csrf_token %}
+            <br>
+            {{modeldataform.as_p}}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+
+
+    {% if row_supp %}
+        <form method="post", action="{% url 'deals_save' %}"class="cust-form-container" >
+            {% csrf_token %}
+            <br>
+            <h1>DATA ENTERED SUCCESSFULLY</h1>
+            <button type="submit">Submit</button>
+            <br>
+        </form>
+    {% endif %} 
+         
+    {% if supp_form %}
+        <form method="post", action="{% url 'savesupp' %}" class="supp-form-container">
+            {% csrf_token %}
+            <h1>SUPPLIER FORM</h1>
+            <br>
+            {{supp_form.as_p}}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+
+    {% if supp_name_form %}
+        <form method="post", action="{% url 'suppdatacheck' %}" class="supp-form-container">
+            {% csrf_token %}
+            <h1>Enter Supplier Data</h1>
+            <br>
+            {{supp_name_form.as_p}}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+    {% if Profit_form %}
+        <form method="post", action="{% url 'saveprofit' %}" class="profit-form-container">
+            {% csrf_token %}
+            <h1>PROFIT FORM</h1>
+            <br>
+            {{Profit_form.as_p}}
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+
+</div>
+</body>
+</html>

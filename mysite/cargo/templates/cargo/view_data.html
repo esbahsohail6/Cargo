@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+   {% load static %}
+   <html lang="en">
+   <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'cargo/style.css' %}">
+   <title>View Data</title>
+   </head>
+   <body>
+
+<div class="view-data-container">
+{% if not NFound %}
+    <h1>View Data</h1>
+    {% if CEO_post and not S_data and not supp and not profit and not AllSupplierData and not AllCustData and not year_select and not customer_modelName and not SoldCar_data and not year_sel and not UnSoldCar_data and not Cust_data and not carData and not carinfo %}
+    <form method='post'>
+    {% csrf_token %}
+    
+        <button type="submit" name="button" value="View Sold Car Data">View Sold Car Data</button>
+        <br>
+        <button type="submit" name="button" value="View Unsold Car Data">View Not Sold Car Data</button>
+        <br>
+        <button type="submit" name="button" value="View Car Data">View Car Data</button>
+        <br>
+        <button type="submit" name="button" value="View Customer Data">View Customer Data</button>
+        <br>
+        <button type="submit" name="button" value="View All customer data">View All Customer Data</button>
+        <br>
+        <button type="submit" name="button" value="View All supplier data">View All Supplier Data</button>
+        <br>
+        <button type="submit" name="button" value="View Profit">View Profit</button>
+        <br>
+        <button type="submit" name="button" value="View Supplier Data">View Supplier Data</button>
+        <br>
+        
+        
+        
+    </form>
+    {% endif %}
+  {% endif %}
+        
+
+    {% if year_select %}
+      <form method="post", action="{% url 'soldcar' %}" class="sold-form-container">
+      {% csrf_token %}
+      {{year_select.as_p}}
+      <button type="submit">Submit</button>
+      
+      <br>
+      <form>
+      
+    {% endif %}
+ 
+    {% if SoldCar_data %}
+        <form method='post'>
+        {% csrf_token %}
+        
+        {% for model_name,release_year,price,cust_id  in SoldCar_data %}
+        <li>MODEL NAME:{{model_name}} RElEASE_YEAR:{{release_year}} PRICE:{{price}} CUST_ID:{{cust_id}}</li>   
+        {% endfor %} 
+        </form>
+    {% endif %}
+
+    {% if NFound %}
+    <h2> Data Not Found </h2>
+    {% endif %}
+    
+    
+
+    {% if year_sel %}
+      <form method="post", action="{% url 'unsoldcar' %}" class="sold-form-container">
+      {% csrf_token %}
+      {{year_sel.as_p}}
+      <button type="submit">Submit</button>
+      <br>
+      </form>
+       
+    {% endif %}
+
+    {% if UnSoldCar_data %}
+        <form method='post'>
+        {% csrf_token %}
+
+        {% for model_name,release_year,price,id  in UnSoldCar_data %}
+        <li>MODEL NAME:{{model_name}} RElEASE_YEAR:{{release_year}} price:{{price}} car_id:{{id}}</li>   
+        {% endfor %}
+        </form>
+    {% endif %} 
+
+    {% if customer_modelName %}
+    <form method="post", action="{% url 'custdata' %}" class="sold-form-container">
+      {% csrf_token %}
+      {{customer_modelName.as_p}}
+      <button type="submit">Submit</button>
+      
+      <br>
+      <form>
+
+    {% endif %}
+
+    {% if Cust_data %}
+        <form method='post'>
+        {% csrf_token %}
+
+        {% for f_name,l_name,phone_no,address,NIC  in Cust_data %}
+        <li>NAME:{{f_name}} {{l_name}} phone_no:{{phone_no}} address:{{address}} NIC:{{NIC}}</li>   
+        {% endfor %}
+        </form>
+
+    {% endif %}
+
+    {% if carData %}
+    <form method="post", action="{% url 'carinfo' %}" class="sold-form-container">
+      {% csrf_token %}
+      {{carData.as_p}}
+      <button type="submit">Submit</button>
+      
+      <br>
+      <form>
+
+    {% endif %}
+
+    
+    {% if carinfo %}
+        <form method='post'>
+        {% csrf_token %}
+
+        {% for id,model_name,release_year,body_style,transmission,mileage,seating_capacity,cargo_capacity,car_dimension,tyre_strength,color,price,quantity  in carinfo %}
+        <li>car id:{{id}} model name: {{model_name}} release_year:{{release_year}} body_style:{{body_style}} transmission:{{transmission}} mileage:{{mileage}} seating_capacity: {{seating_capacity}} cargo_capacity:{{cargo_capacity}} tyre_strength:{{tyre_strength}} color:{{color}} price:{{price}} quantity:{{quantity}}</li>   
+        {% endfor %}
+
+        </form>
+    {% endif %}
+    {% comment %} {% if allcustdata %}
+    <form method="post", action="{% url 'AllCustData' %}" class="sold-form-container">
+      {% csrf_token %}
+      hello
+      <button type="submit">Submit</button>
+      <br>
+    </form>
+    {% endif %} {% endcomment %}
+
+    {% if AllCustData %}
+    <form method='post'>
+        {% csrf_token %}
+
+        {% for id,f_name,l_name,phone_no,address,NIC,email  in AllCustData %}
+        <li>NAME:{{f_name}} {{l_name}} phone_no:{{phone_no}} address:{{address}} NIC:{{NIC}} email:{{email}}</li>   
+        {% endfor %}
+
+        </form>
+
+    {% endif %}
+    {% if profit %}
+    <form method='post'>
+        {% csrf_token %}
+
+        {% for id,model_name,year,profit  in profit %}
+        <li>Model NAME:{{model_name}}  Year:{{year}} Profit:{{profit}}</li>   
+        {% endfor %}
+
+        </form>
+
+    {% endif %}
+    {% if AllSupplierData %}
+    {% for id,supp_name,supp_email,supp_phone_no,supp_address  in AllSupplierData %}
+        <li>NAME:{{supp_name}}  phone_no:{{supp_phone_no}} address:{{supp_address}}  email:{{supp_email}}</li>   
+        {% endfor %}
+    {% endif %}
+
+    {% if supp %}
+    <form method="post", action="{% url 'suppinfo' %}" class="sold-form-container">
+      {% csrf_token %}
+      {{supp.as_p}}
+      <button type="submit">Submit</button>
+      
+      <br>
+      <form>
+
+    {% endif %}
+    {% if S_data %}
+    
+    {% for supp_name,supp_email,supp_phoneno,supp_address  in S_data %}
+    <li>NAME:{{supp_name}}  phone_no:{{supp_phoneno}} address:{{supp_address}}  email:{{supp_email}}</li>   
+    {% endfor %}
+    
+
+    {% endif %}
+    
+
+  
+      
+    
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #B2A4D4, #452773);
+    color: #D7C49E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure full viewport height */
+  }
+  
+  /* Container Styling */
+  .container {
+    width: 80%; /* Adjusted width for responsiveness */
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #343148;
+    border-radius: 15px;
+    text-align: center;
+    color: #D7C49E;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .container h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .container h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .container a {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px;
+    color: #D7C49E;
+    text-decoration: none;
+    background-color: #795F80; /* Button background color */
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .container a:hover {
+    background-color: #5e4765; /* Darker hover color */
+    transform: translateY(-3px);
+  }
+  
+  /* Car Image Styling */
+  .car-image {
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Data Entry Container Styling */
+  .data-entry-container {
+    width: 80%; /* Adjusted width for responsiveness */
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: linear-gradient(to bottom right, #301934, #343148);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #301934;
+  }
+  
+  .data-entry-container h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    width: 50%; /* Adjusted button width */
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #795F80; /* Button background color */
+    color: #D7C49E;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #5e4765; /* Darker hover color */
+    transform: translateY(-3px);
+  }
+  
+  /* Form Styling */
+  form {
+    width: 80%; /* Adjusted width for responsiveness */
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #B6B5D8;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    text-align: left;
+  }
+  
+  form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #0f3460;
+  }
+  
+  form p {
+    font-size: 18px;
+    color: #0f3460;
+  }
+  
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #0f3460;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+  
+  form button {
+    width: 100%;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #433643;
+    color: #D7C49E;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #2a283a;
+    transform: translateY(-3px);
+  }
+  .view-data-container{
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #343148;
+    border-radius: 15px;
+    text-align: center;
+    color: cadetblue;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+
+  }
+  .cust-form-container{
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #343148;
+    border-radius: 15px;
+    text-align: center;
+    color: cadetblue;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+   {% load static %}
+   <html lang="en">
+   <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'cargo/style.css' %}">
+   <title>CARGO</title>
+   </head>
+   <body>
+   
+        <div class="container">
+        
+           <h1>CARGO</h1>
+           <h2>Manages basic info for car company</h2>
+           <br>
+           
+           {% if emp_post %}
+           <a href="{% url 'data_entry' %}">Data Entry</a>
+           <br>
+           <a href="{% url 'update_data' %}">Update data</a>
+           {% endif %}
+
+           {% if manager_post %}
+           <a href="{% url 'view_data' %}">Data View</a>
+           <br
+           {% endif %}
+
+           {% if CEO_post %}
+           <a href="{% url 'view_data' %}">Data View</a>
+           {% endif %}
+        </div>
+   
+      
+</body>
+</html>

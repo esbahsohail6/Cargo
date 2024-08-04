@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+   {% load static %}
+   <html lang="en">
+   <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'cargo/style.css' %}">
+   <title>Update Data</title>
+   </head>
+   <body>
+   <div class="update-data-container">
+
+
+    {% if updateForm %}
+      <h1> Enter the data of Customer Who bought the car from our company </h1>
+      <form method="post", action="{% url 'check_cust' %}" class="delete-form-container">
+      {% csrf_token %}
+      {{updateForm.as_p}}
+      <br>
+      <button type="submit">Submit</button>
+      
+      <br>
+      <form>
+      
+    {% endif %}
+    {% if Newcust  %}
+      
+<form method="post" action="{% url 'update_cust' %}">
+    {% csrf_token %}
+    <input type="hidden" name="cust_id" value="{{ Newcust.initial.cust_id }}">  <!-- Pass the customer ID -->
+    <label for="id_New_Customer_Name">New Customer Name:</label>
+    <input type="text" id="id_New_Customer_Name" name="New_Customer_Name" value="{{ Newcust.initial.New_Customer_Name }}" required>
+    <br>
+    <label for="id_New_Customer_NIC">New Customer NIC:</label>
+    <input type="text" id="id_New_Customer_NIC" name="New_Customer_NIC" value="{{ Newcust.initial.New_Customer_NIC }}" required>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+      
+    {% endif %}
+    {% if Ncust  %}
+<form method="post" action="{% url 'I_cust' %}">
+    {% csrf_token %}
+    <input type="hidden" name="cust_id" value="{{ Ncust.initial.cust_id }}">  <!-- Pass the customer ID -->
+    <input type="hidden" name="f_name" value="{{ Ncust.initial.f_name }}">
+    <input type="hidden" name="NIC" value="{{ Ncust.initial.NIC }}">
+    <input type="hidden" name="l_name" value="{{ Ncust.initial.l_name }}">
+    <input type="hidden" name="modelName" value="{{ Ncust.initial.modelName }}">
+    <input type="hidden" name="releaseyear" value="{{ Ncust.initial.releaseyear }}">
+    <label for="id_New_Customer_Name">New Customer Name:</label>
+    <input type="text" id="id_New_Customer_Name" name="New_Customer_Name" value="{{ Ncust.initial.New_Customer_Name }}" required>
+    <br>
+    <label for="id_New_Customer_NIC">New Customer NIC:</label>
+    <input type="text" id="id_New_Customer_NIC" name="New_Customer_NIC" value="{{ Ncust.initial.New_Customer_NIC }}" required>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+      
+    {% endif %}
+
+
+</div>
+</body>
+</html>
